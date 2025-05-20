@@ -5,8 +5,10 @@ Finally the tool pulls data from the excel file, downloaded from a CRM Salesforc
 
 The excel file consists of the following columns: Service Team Name | Responsible Technician: Member Name	| Inventory Location: Location Name |	City | Country | Zip | Member Name - And it is always named us "UK&I - Technicians-2025-03-28-14-05-41", depending on the date and time of download. The tool looks for the excel file that includes the word "technicians".
 The excel file had some flaws: empty cells and duplicates.
-- The tool first aims to rid the file of those flaws and then map out the coordinates of the home address of each engineer as well as account.
-- The tool creates another excel file with those flaws removed, for reference.
-- The tool also creates an error log, in case an error occurs, and stacks the errors based on date/time.
+- The tool first asks the user of the desired radius in miles. Then it converts it to kilometers for its calculations.
+- Then it aims to rid the downloaded excel file of the aforementioned flaws.
+- Then it creates another excel file with those flaws removed, for reference.
+- IT also creates an error log, in case an error occurs, and stacks the errors based on date/time.
+- Finally, the tool generates an HTML file including an interactive map. In there, the user can turn on/off the locations of engineers, accounts as well as the desired radius (travelling distance) around the home address of each individual.
 
-
+![image](https://github.com/user-attachments/assets/824ef84e-274c-4bdd-8de8-999c4814ad39)
