@@ -11,5 +11,6 @@ The excel file had some flaws: empty cells and duplicates.
 - IT also creates an error log, in case an error occurs, and stacks the errors based on date/time.
 - Finally, the tool generates an HTML file including an interactive map. In there, the user can turn on/off the locations of engineers, accounts as well as the desired radius (travelling distance) around the home address of each individual.
 - The user can click on each pin to get information about each engineer and account.
+- The user can also toggle on/off each and every one of the engineers, their radiuses and accounts individually.
   
 ![image](https://github.com/user-attachments/assets/824ef84e-274c-4bdd-8de8-999c4814ad39)
