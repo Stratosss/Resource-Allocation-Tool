@@ -26,6 +26,7 @@ def get_employee_coordinates(file):
     for index, row in df.iterrows():
         postcode = str(row["Zip"]).strip()
         country = row['Country']
+        
         # Skip rows with empty or invalid postcodes
         if pd.isna(postcode) or postcode == "" or postcode.isspace():
             print(f"Skipping row with empty postcode at index {index}")
