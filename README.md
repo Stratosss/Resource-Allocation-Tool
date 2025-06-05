@@ -2,9 +2,9 @@
 ## Overview
 A Python-based interactive mapping tool developed to visualize engineers’ home locations and coverage areas in UKI, inspired by a gap identified in my current job where no such solution existed. It includes configurable radius zones, account overlays, and interactive team layers to support data-driven decisions on recruitment, resource allocation, and service coverage. 
 Built with folium, pandas, and openpyxl, geopy and pgeocode the tool enhances operational visibility and helps managers identify geographical service gaps and optimize field support.
-Finally the tool pulls data from an excel file, downloaded from a CRM Salesforce database handled by my employer.
+Finally the tool pulls data from two excel files, downloaded from a CRM Salesforce database handled by my employer.
 
-The excel file consists of the following columns: Service Team Name | Responsible Technician: Member Name	| Inventory Location: Location Name |	City | Country | Zip | Member Name - And it is always named as "UK&I - Technicians-2025-03-28-14-05-41", depending on the date and time of download. The tool looks for the excel file that includes the word "technicians".
+The first excel file (engineers) consists of the following columns: Service Team Name | Responsible Technician: Member Name	| Inventory Location: Location Name |	City | Country | Zip | Member Name - And it is always named as "UK&I - Technicians-2025-03-28-14-05-41", depending on the date and time of download. The tool looks for the excel file that includes the word "technicians". The second excel file (accounts) consists of the following columns: Account Name | Latitude | Longitude
 The excel file had some flaws: empty cells and duplicates.
 - The tool first asks the user of the desired radius in miles. Then it converts it to kilometers for its calculations.
 - Then it aims to rid the downloaded excel file of the aforementioned flaws (Data cleaning).
