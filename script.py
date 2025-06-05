@@ -108,7 +108,7 @@ try:
     msvcrt.getch()
 except (IndexError, FileNotFoundError) as e:
     print("Error: " + str(e))
-    print("Please provide an excel file (extension .xlsx) with the following formatted name: UK&I - Technicians-YYYY-MM-DD-hh-mm-ss and a file named "" ")
+    print("Please provide an excel file (extension .xlsx) with the following formatted name: UK&I - Technicians-YYYY-MM-DD-hh-mm-ss and a file named Accounts")
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Get current time
     error_message = f"[{timestamp}] Error: {e}\n"
     error_details = traceback.format_exc()  # Get full traceback
