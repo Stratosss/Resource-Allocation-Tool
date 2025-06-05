@@ -51,30 +51,20 @@ def get_employee_coordinates(file):
             # Initialize geocoders
             geo_uk = pgeocode.Nominatim("GB")  # Covers UK (England, Scotland, Wales, N. Ireland) - Interested in NI for this
             geo_ie = pgeocode.Nominatim("IE")  # Covers Ireland
-            # Create empty latitude/longitude columns
-            df["Latitude"] = None
-            df["Longitude"] = None
+            
+            # Try UK geocoding first
+            result_uk = geo_uk.query_postal_code(postcode)
+            if pd.notna(result_uk.latitude) and pd.notna(result_uk.longitude):
+                df.at[index, "Latitude"] = result_uk.latitude
+                df.at[index, "Longitude"] = result_uk.longitude
+                continue  # Skip to next row if found
 
-            # Iterate through each row and process postcode
-            for index, row in df.iterrows():
-                postcode = str(row["Zip"]).strip()  # Ensure postcode is a clean string
-                
-                # Skip if postcode is NaN or empty
-                if pd.isna(postcode) or not postcode:
-                    continue  
+            # If not found in UK, try Ireland geocoding
+            result_ie = geo_ie.query_postal_code(postcode)
+            if pd.notna(result_ie.latitude) and pd.notna(result_ie.longitude):
+                df.at[index, "Latitude"] = result_ie.latitude
+                df.at[index, "Longitude"] = result_ie.longitude
 
-                # Try UK geocoding first
-                result_uk = geo_uk.query_postal_code(postcode)
-                if pd.notna(result_uk.latitude) and pd.notna(result_uk.longitude):
-                    df.at[index, "Latitude"] = result_uk.latitude
-                    df.at[index, "Longitude"] = result_uk.longitude
-                    continue  # Skip to next row if found
-
-                # If not found in UK, try Ireland geocoding
-                result_ie = geo_ie.query_postal_code(postcode)
-                if pd.notna(result_ie.latitude) and pd.notna(result_ie.longitude):
-                    df.at[index, "Latitude"] = result_ie.latitude
-                    df.at[index, "Longitude"] = result_ie.longitude
 
             
     # Format Latitude and Longitude to 6 decimal places
