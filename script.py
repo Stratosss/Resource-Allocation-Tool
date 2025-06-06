@@ -35,7 +35,7 @@ try:
 
     df_employees = pd.read_excel(file_path, keep_default_na=False)
 
-    df_accounts = pd.read_excel("Accounts2.xlsx", skiprows=1)  # Adjust file path
+    df_accounts = pd.read_excel("Accounts2.xlsx", skiprows=1)  
     df_accounts = df_accounts.dropna(subset=["Latitude", "Longitude"]) #removes null cells
 
     m = Map(
